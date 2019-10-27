@@ -1,1 +1,1 @@
-web: -jar C:\Users\walya\IdeaProjects\telegrambotnew2\target\telegrambotnew2-0.0.1-SNAPSHOT.jar
+web: -Dserver.port=$PORT -jar target\telegrambotnew2-0.0.1-SNAPSHOT.jar
