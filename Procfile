@@ -1,1 +1,1 @@
-web: -jar target/telegrambotnew2-0.0.1-SNAPSHOT.jar
+worker: -jar target/telegrambotnew2-0.0.1-SNAPSHOT.jar
