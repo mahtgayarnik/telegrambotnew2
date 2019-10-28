@@ -17,7 +17,7 @@ public class TimeRepositoryImpl implements TimeRepository {
 //        connection = PostgreSqlConnection.getConnection();
 //    }
 
-    private String dbName = "dfn9v3pq2trvcn";
+    private String dbName = "dc38qhgpk1vokm";
 
     @Override
     public TimeEntity getTime(String nameTime) {

@@ -16,7 +16,7 @@ public class VoteRepositoryImpl implements VoteRepository {
 //        connection = PostgreSqlConnection.getConnection();
 //    }
 
-    private String dbName = "dfn9v3pq2trvcn";
+    private String dbName = "dc38qhgpk1vokm";
 
     @Override
     public void saveVote(VoteEntity vote) {
