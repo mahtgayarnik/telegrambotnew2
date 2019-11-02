@@ -357,6 +357,13 @@ public class BotController extends TelegramLongPollingBot {
                             executeMessage(sendMessageService.sendMsg(message, lng.getLang(userTelegramId).getLanguage().equals("e") ? statService.getEngFaq() : statService.getRusFaq()));
                         }
                     }
+
+                    if (message.getText().contains(lng.getLng(userTelegramId).get("Поддержка"))) {
+                        if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {
+                            executeMessage(sendMessageService.sendMsg(message, "email: voitec1515@gmail.com"));
+                        }
+                    }
+
                 }
                 //admin account
             } else {

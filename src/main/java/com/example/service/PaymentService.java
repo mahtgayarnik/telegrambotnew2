@@ -188,10 +188,10 @@ public class PaymentService {
 //                System.out.println(transaction.getCardPan());
 //            }
 //        }
-////        RestTemplate restTemplate = new RestTemplate();
-////        String url = "https://api.interkassa.com/v1/currency/5d96354a1ae1bd0f008b4573";
-////        String s = restTemplate.exchange(url, HttpMethod.GET, HttpEntity.EMPTY, String.class).getBody();
-////        System.out.println(s);
+//        RestTemplate restTemplate = new RestTemplate();
+//       String url = "https://api.interkassa.com/v1/currency/5d96354a1ae1bd0f008b4573";
+//       String s = restTemplate.exchange(url, HttpMethod.GET, HttpEntity.EMPTY, String.class).getBody();
+//        System.out.println(s);
 //    }
 
 }
