@@ -11,6 +11,11 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.time.LocalTime;
 
 public class BotController extends TelegramLongPollingBot {
@@ -60,8 +65,25 @@ public class BotController extends TelegramLongPollingBot {
 
             if (update.getCallbackQuery().getData().equals("Pay / Оплатить")) {
 //                executeMessage(sendMessageService.sendMsgWithInLine(update, properties.getProperties().getProperty("contribUrl"), keyboardService.setButtonAdminReminder(userTelegramId)));
+
+                try {
+                    Desktop d=Desktop.getDesktop();
+
+                    d.browse(new URI(
+                            String.format(
+                                    "https://www.liqpay.ua/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJwdWJsaWNfa2V5IjoiaTg4NzE5NDUyNDQ3IiwiYW1vdW50IjoiNSIsImN1cnJlbmN5IjoiVUFIIiwiZGVzY3JpcHRpb24iOiLQnNC%2B0Lkg0YLQvtCy0LDRgCIsInR5cGUiOiJidXkiLCJsYW5ndWFnZSI6InJ1In0%3D&signature=ftyseV8nBmOZbvb9zmkn92ZSBO0%3D",
+                                    URLEncoder.encode( "https://www.liqpay.ua/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJwdWJsaWNfa2V5IjoiaTg4NzE5NDUyNDQ3IiwiYW1vdW50IjoiNSIsImN1cnJlbmN5IjoiVUFIIiwiZGVzY3JpcHRpb24iOiLQnNC%2B0Lkg0YLQvtCy0LDRgCIsInR5cGUiOiJidXkiLCJsYW5ndWFnZSI6InJ1In0%3D&signature=ftyseV8nBmOZbvb9zmkn92ZSBO0%3D" , "UTF8" )
+                            )
+                    ));
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                } catch (URISyntaxException use) {
+                    use.printStackTrace();
+                }
+
                 executeMessage(sendMessageService.sendMsgWithInLine(update, "https://www.liqpay.ua/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJwdWJsaWNfa2V5IjoiaTg4NzE5NDUyNDQ3IiwiYW1vdW50IjoiNSIsImN1cnJlbmN5IjoiVUFIIiwiZGVzY3JpcHRpb24iOiLQnNC%2B0Lkg0YLQvtCy0LDRgCIsInR5cGUiOiJidXkiLCJsYW5ndWFnZSI6InJ1In0%3D&signature=ftyseV8nBmOZbvb9zmkn92ZSBO0%3D",
                         keyboardService.setButtonAdminReminder(userTelegramId)));
+
             }
 
             if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {
