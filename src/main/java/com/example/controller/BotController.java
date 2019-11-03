@@ -12,6 +12,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.awt.*;
+import java.net.URI;
 import java.net.URL;
 import java.time.LocalTime;
 
@@ -64,7 +65,7 @@ public class BotController extends TelegramLongPollingBot {
 //                executeMessage(sendMessageService.sendMsgWithInLine(update, properties.getProperties().getProperty("contribUrl"), keyboardService.setButtonAdminReminder(userTelegramId)));
 
                 try {
-                    Desktop.getDesktop().browse(new URL("https://www.liqpay.ua/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJwdWJsaWNfa2V5IjoiaTg4NzE5NDUyNDQ3IiwiYW1vdW50IjoiNSIsImN1cnJlbmN5IjoiVUFIIiwiZGVzY3JpcHRpb24iOiLQnNC%2B0Lkg0YLQvtCy0LDRgCIsInR5cGUiOiJidXkiLCJsYW5ndWFnZSI6InJ1In0%3D&signature=ftyseV8nBmOZbvb9zmkn92ZSBO0%3D").toURI());
+                    Desktop.getDesktop().browse(URI.create("https://www.liqpay.ua/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJwdWJsaWNfa2V5IjoiaTg4NzE5NDUyNDQ3IiwiYW1vdW50IjoiNSIsImN1cnJlbmN5IjoiVUFIIiwiZGVzY3JpcHRpb24iOiLQnNC%2B0Lkg0YLQvtCy0LDRgCIsInR5cGUiOiJidXkiLCJsYW5ndWFnZSI6InJ1In0%3D&signature=ftyseV8nBmOZbvb9zmkn92ZSBO0%3D"));
                 } catch (Exception e) {}
 
                 executeMessage(sendMessageService.sendMsgWithInLine(update, "https://www.liqpay.ua/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJwdWJsaWNfa2V5IjoiaTg4NzE5NDUyNDQ3IiwiYW1vdW50IjoiNSIsImN1cnJlbmN5IjoiVUFIIiwiZGVzY3JpcHRpb24iOiLQnNC%2B0Lkg0YLQvtCy0LDRgCIsInR5cGUiOiJidXkiLCJsYW5ndWFnZSI6InJ1In0%3D&signature=ftyseV8nBmOZbvb9zmkn92ZSBO0%3D",
