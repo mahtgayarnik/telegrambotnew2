@@ -13,9 +13,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.time.LocalTime;
 
-//todo скрипт на создание таблиц и заполнение админскими ботами
-//todo тормознуть авто подтверждение
-//todo добавить полную очистку БД
 public class BotController extends TelegramLongPollingBot {
 
 //    private MyProperties properties = MyProperties.getInstance();
@@ -63,7 +60,8 @@ public class BotController extends TelegramLongPollingBot {
 
             if (update.getCallbackQuery().getData().equals("Pay / Оплатить")) {
 //                executeMessage(sendMessageService.sendMsgWithInLine(update, properties.getProperties().getProperty("contribUrl"), keyboardService.setButtonAdminReminder(userTelegramId)));
-                executeMessage(sendMessageService.sendMsgWithInLine(update, "https://secure.wayforpay.com/payment/s84640fbbb99b", keyboardService.setButtonAdminReminder(userTelegramId)));
+                executeMessage(sendMessageService.sendMsgWithInLine(update, "https://www.liqpay.ua/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJwdWJsaWNfa2V5IjoiaTg4NzE5NDUyNDQ3IiwiYW1vdW50IjoiNSIsImN1cnJlbmN5IjoiVUFIIiwiZGVzY3JpcHRpb24iOiLQnNC%2B0Lkg0YLQvtCy0LDRgCIsInR5cGUiOiJidXkiLCJsYW5ndWFnZSI6InJ1In0%3D&signature=ftyseV8nBmOZbvb9zmkn92ZSBO0%3D",
+                        keyboardService.setButtonAdminReminder(userTelegramId)));
             }
 
             if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {

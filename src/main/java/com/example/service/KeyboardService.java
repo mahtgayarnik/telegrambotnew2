@@ -237,9 +237,8 @@ public class KeyboardService {
         initInlineKeyboard();
         List<InlineKeyboardButton> keyboardButtonsRowOne = new ArrayList<>();
 //        keyboardButtonsRowOne.add(new InlineKeyboardButton().setText("Pay / Оплатить" + " " + MyProperties.getInstance().getProperties().getProperty("contrib") + " " +
-        keyboardButtonsRowOne.add(new InlineKeyboardButton().setText("Pay / Оплатить" + " " + "2" + " " +
+        keyboardButtonsRowOne.add(new InlineKeyboardButton().setText("Pay/Оплатить liqpay 5 UAH")
 //                MyProperties.getInstance().getProperties().getProperty("currency"))
-                "UAH")
                 .setCallbackData("Pay / Оплатить"));
         inlineKeyboardMarkup.setKeyboard(Collections.singletonList(keyboardButtonsRowOne));
         return inlineKeyboardMarkup;
