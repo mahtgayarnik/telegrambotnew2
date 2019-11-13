@@ -36,6 +36,14 @@ public class AdminService {
         return "Пользователь ID " + userTelegramId + " не найден";
     }
 
+    public void confirmUserBotPayAuto(Long userTelegramId) {
+        UserEntity user = userRepository.getUserByTelegramId(userTelegramId);
+        if (user != null) {
+            user.setPaidBot(true);
+            userRepository.updateUser(user);
+        }
+    }
+
     public SendMessage createVoting(Message message, String text) {
         userRepository.updateDefaultAnswerForAllUsers();
         voteRepository.disableAllVotes();

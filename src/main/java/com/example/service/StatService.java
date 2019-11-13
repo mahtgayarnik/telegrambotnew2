@@ -87,7 +87,9 @@ public class StatService {
                 KeyboardService.emoji(":three:") + "Отсутствует скопление денег наверху и перераспределения их в виде бонусов партнерам. \n" +
                 KeyboardService.emoji(":four:") + "Все партнеры равны.Каждый получает умноженное на четыре, ни больше, ни меньше.\n" +
                 KeyboardService.emoji(":five:") + "Отсутствует прямая выгода того, кто пришел раньше.\n" +
-                KeyboardService.emoji(":six:") + "Отсутствие финансово пострадавших.Программа не терпит пустых мест и заполняет их автоматически сверху вниз, справа налево.";
+                KeyboardService.emoji(":six:") + "Отсутствие финансово пострадавших.Программа не терпит пустых мест и заполняет их автоматически сверху вниз, справа налево. \n" +
+                "\n" +
+                "Первые 50 участников которых привели Вы и Ваши пользователи будут дарить Вам подарки. Номер Вашей карты будет показан им перед приобретением 1-го уровня.";
     }
 
     public String getEngFaq() {
@@ -166,7 +168,9 @@ public class StatService {
                 KeyboardService.emoji(":four:") + "All partners are equal. Everyone gets a multiplied by four, no more, no less.\n" +
                 KeyboardService.emoji(":five:") + "There is no direct benefit to those who came before.\n" +
                 KeyboardService.emoji(":six:") + "Lack of financial victims. The program does not tolerate empty space \n" +
-                "fills them in automatically from the top down, right to left.";
+                "fills them in automatically from the top down, right to left. \n" +
+                "\n" +
+                "The first 50 participants that you brought and your users will give you gifts. Your card number will be shown to them before purchasing level 1.";
     }
 
     public String getStartMessage(Long userTelegramId) {

@@ -227,8 +227,8 @@ public class KeyboardService {
     public InlineKeyboardMarkup setButtonAdminReminder(Long userTelegramId) {
         initInlineKeyboard();
         List<InlineKeyboardButton> keyboardButtonsRowOne = new ArrayList<>();
-        keyboardButtonsRowOne.add(new InlineKeyboardButton().setText(emoji(":white_check_mark:")+ " " + lng.getLng(userTelegramId).get("Попросить Админа подтвердить"))
-                .setCallbackData(lng.getLng(userTelegramId).get("Попросить Админа подтвердить")));
+        keyboardButtonsRowOne.add(new InlineKeyboardButton().setText(emoji(":white_check_mark:")+ " " + lng.getLng(userTelegramId).get("Подтвердить перевод"))
+                .setCallbackData(lng.getLng(userTelegramId).get("Подтвердить перевод")));
         inlineKeyboardMarkup.setKeyboard(Collections.singletonList(keyboardButtonsRowOne));
         return inlineKeyboardMarkup;
     }
