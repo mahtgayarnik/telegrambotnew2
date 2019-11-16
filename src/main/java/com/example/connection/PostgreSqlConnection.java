@@ -16,6 +16,11 @@ public class PostgreSqlConnection {
     private static final String DB_USERNAME = "eiechsmzqvnfal";
     private static final String DB_PASSWORD = "b519c81fb237ec29adfc07a6095487b392c2fc419ac1d976e815d0d5f0074180";
 
+//    private static final String DB_DRIVER = "org.postgresql.Driver";
+//    private static final String DB_URL_MY_DB = "jdbc:postgresql://localhost:5432/telegram";
+//    private static final String DB_USERNAME = "postgres";
+//    private static final String DB_PASSWORD = "password";
+
     public static Connection getConnection() {
         Connection connection = null;
         try {

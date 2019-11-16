@@ -237,9 +237,9 @@ public class KeyboardService {
         initInlineKeyboard();
         List<InlineKeyboardButton> keyboardButtonsRowOne = new ArrayList<>();
 //        keyboardButtonsRowOne.add(new InlineKeyboardButton().setText("Pay / Оплатить" + " " + MyProperties.getInstance().getProperties().getProperty("contrib") + " " +
-        keyboardButtonsRowOne.add(new InlineKeyboardButton().setText("Pay/Оплатить liqpay 5 UAH")
+        keyboardButtonsRowOne.add(new InlineKeyboardButton().setText("Подтвердить перевод/Confirm Transfer")
 //                MyProperties.getInstance().getProperties().getProperty("currency"))
-                .setCallbackData("Pay / Оплатить"));
+                .setCallbackData("Confirm/Подтвердить"));
         inlineKeyboardMarkup.setKeyboard(Collections.singletonList(keyboardButtonsRowOne));
         return inlineKeyboardMarkup;
     }

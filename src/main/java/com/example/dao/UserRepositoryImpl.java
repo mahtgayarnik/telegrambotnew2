@@ -109,6 +109,23 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+
+    @Override
+    public void updateUserByReferralId(Long telegramId) {
+        Connection connection = PostgreSqlConnection.getConnection();
+        try {
+            String sql = "UPDATE " + dbName + ".public.users SET invite_left_id = CASE WHEN invite_left_id = " + telegramId + " THEN 0 ELSE invite_left_id END," +
+                    "                                 invite_right_id = CASE WHEN invite_right_id = " + telegramId + " THEN 0 ELSE invite_right_id END" +
+                    "                            WHERE level_user = (SELECT level_user FROM telegram.public.users WHERE telegram_id = " + telegramId + ");";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
     public Long getTelegramId(String cardPan, Integer lvl) {
         Connection connection = PostgreSqlConnection.getConnection();
@@ -129,16 +146,24 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void removeAllUserWhoDoNotPaid() {
+    public List<Long> removeAllUserWhoDoNotPaid() {
         Connection connection = PostgreSqlConnection.getConnection();
+        List<Long> iDs = new ArrayList<>();
+        Long telegramId;
         try {
             String sql = "UPDATE " + dbName + ".public.users SET sponsor_id = 0 WHERE sponsor_id != 0 AND paid_sponsor = false";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.execute();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                telegramId = resultSet.getLong("telegram_id");
+                iDs.add(telegramId);
+                preparedStatement.execute();
+            }
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return iDs;
     }
 
     @Override

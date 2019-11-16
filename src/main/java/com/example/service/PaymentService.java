@@ -84,8 +84,8 @@ public class PaymentService {
     }
 
     public void removeAllUserWhoDoNotPaid() {
-        userRepository.removeAllUserWhoDoNotPaid();
-        //todo отправлять всем удаленным юзерам сообщение о их удалении
+        List<Long> iDs = userRepository.removeAllUserWhoDoNotPaid();
+        iDs.forEach(id -> userRepository.updateUserByReferralId(id));
     }
 
     public void sendConfirmPaid(Long telegramId, String text) {
@@ -149,7 +149,7 @@ public class PaymentService {
         confirmUser.setPaidSponsor(true);
         int lvl = validationService.getUserLvl(confirmUser.getTelegramId());
         confirmUser.setLevel(lvl != 5 ? (lvl + 1) : 1);
-        confirmUser.setBalance(confirmUser.getBalance() + -2.0); //todo подставить переменную из проперти
+        //confirmUser.setBalance(confirmUser.getBalance() + -2.0); //todo подставить переменную из проперти
         userRepository.updateUser(confirmUser);
         sendConfirmPaid(confirmUser.getTelegramId(), KeyboardService.emoji(":white_check_mark:") + lng.getLng(confirmUser.getTelegramId()).get("Покупка уровня подтверждена"));
     }

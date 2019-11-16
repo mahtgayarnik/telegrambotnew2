@@ -12,14 +12,14 @@ import java.util.Optional;
 
 public class AdminService {
 
-//    private MyProperties properties = MyProperties.getInstance();
+    //    private MyProperties properties = MyProperties.getInstance();
     private UserRepository userRepository = new UserRepositoryImpl();
     private VoteRepository voteRepository = new VoteRepositoryImpl();
     private PaymentService paymentService = new PaymentService();
     private KeyboardService keyboardService = new KeyboardService();
     private SendMessageService sendMessageService = new SendMessageService();
     private TimeRepository timeRepository = new TimeRepositoryImpl();
-//    private String adminId = properties.getProperties().getProperty("adminId");
+    //    private String adminId = properties.getProperties().getProperty("adminId");
     private String adminId = "01010101";
 
     public void setTimer(String time) {
@@ -98,8 +98,14 @@ public class AdminService {
     public List<Long> getUserToConfirmForAdmin(Long id) {
         List<Long> ids = new ArrayList<>();
         UserEntity user = userRepository.getUserByTelegramId(id);
-        if (!userRepository.getUserByTelegramId(user.getInvitedLeftId()).getPaidSponsor()) ids.add(user.getInvitedLeftId());
-        if (!userRepository.getUserByTelegramId(user.getInvitedRightId()).getPaidSponsor()) ids.add(user.getInvitedRightId());
+        boolean b = Optional.ofNullable(userRepository.getUserByTelegramId(user.getInvitedLeftId())).map(UserEntity::getPaidSponsor).orElse(true);
+        if (!b) {
+            ids.add(user.getInvitedLeftId());
+        }
+        b = Optional.ofNullable(userRepository.getUserByTelegramId(user.getInvitedRightId())).map(UserEntity::getPaidSponsor).orElse(true);
+        if (!b) {
+            ids.add(user.getInvitedRightId());
+        }
         UserEntity left = userRepository.getUserByTelegramId(user.getInvitedLeftId());
         UserEntity right = userRepository.getUserByTelegramId(user.getInvitedRightId());
         ids.add(Optional.ofNullable(left).map(UserEntity::getInvitedLeftId).orElse(0L));

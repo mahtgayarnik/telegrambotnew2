@@ -15,11 +15,13 @@ public interface UserRepository {
 
     void updateDefaultAnswerForAllUsers();
 
+    void updateUserByReferralId(Long telegramId);
+
     UserEntity getUserByTelegramId(Long telegramId);
 
     UserEntity getUserById(Long id);
 
-    void removeAllUserWhoDoNotPaid();
+    List<Long> removeAllUserWhoDoNotPaid();
 
     List<Cell> getAllCells();
 

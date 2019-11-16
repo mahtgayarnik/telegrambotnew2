@@ -20,7 +20,7 @@ import java.time.LocalTime;
 
 public class BotController extends TelegramLongPollingBot {
 
-//    private MyProperties properties = MyProperties.getInstance();
+    //    private MyProperties properties = MyProperties.getInstance();
     private RegistrationService registrationService = new RegistrationService();
     private KeyboardService keyboardService = new KeyboardService();
     private SendMessageService sendMessageService = new SendMessageService();
@@ -63,10 +63,17 @@ public class BotController extends TelegramLongPollingBot {
 //                executeMessage(sendMessageService.sendMsg(update, properties.getProperties().getProperty("contribUrl")));
 //            }
 
-            if (update.getCallbackQuery().getData().equals("Pay / Оплатить")) {
+            if (update.getCallbackQuery().getData().equals("Confirm/Подтвердить")) {
 //                executeMessage(sendMessageService.sendMsgWithInLine(update, properties.getProperties().getProperty("contribUrl"), keyboardService.setButtonAdminReminder(userTelegramId)));
-                executeMessage(sendMessageService.sendMsgWithInLine(update, "https://www.liqpay.ua/api/3/checkout?data=eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJwdWJsaWNfa2V5IjoiaTg4NzE5NDUyNDQ3IiwiYW1vdW50IjoiNSIsImN1cnJlbmN5IjoiVUFIIiwiZGVzY3JpcHRpb24iOiLQnNC%2B0Lkg0YLQvtCy0LDRgCIsInR5cGUiOiJidXkiLCJsYW5ndWFnZSI6InJ1In0%3D&signature=ftyseV8nBmOZbvb9zmkn92ZSBO0%3D",
-                        keyboardService.setButtonAdminReminder(userTelegramId)));
+                if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {
+                    adminService.confirmUserBotPayAuto(userTelegramId);
+
+                    paymentService.askedToAdminConfirm(update, KeyboardService.emoji(":heavy_exclamation_mark:") + KeyboardService.emoji(":heavy_exclamation_mark:") +
+                            lng.getLng(userTelegramId).get("У Вас новый заказ!") + KeyboardService.emoji(":heavy_exclamation_mark:") + KeyboardService.emoji(":heavy_exclamation_mark:")
+                            + (" Пожалуйста, проверьте баланс Вашей карты и подтвердите мою оплату \nМой ID: ")
+                            + userTelegramId);
+                    executeMessage(sendMessageService.sendMsg(update, lng.getLng(userTelegramId).get("Оплата добровольного взноса подтверждена! Теперь Вы можете приобрести уровень.")));
+                }
             }
 
             if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {
@@ -83,19 +90,19 @@ public class BotController extends TelegramLongPollingBot {
                 }
             }
 
-            if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {
-                if (update.getCallbackQuery().getData().equals(lng.getLng(userTelegramId).get("Подтвердить перевод"))) {
-                    if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {
-                            adminService.confirmUserBotPayAuto(userTelegramId);
-
-                            paymentService.askedToAdminConfirm(update, KeyboardService.emoji(":heavy_exclamation_mark:") + KeyboardService.emoji(":heavy_exclamation_mark:") +
-                                    lng.getLng(userTelegramId).get("У Вас новый заказ!") + KeyboardService.emoji(":heavy_exclamation_mark:") + KeyboardService.emoji(":heavy_exclamation_mark:")
-                                    + (" Пожалуйста, проверьте баланс Вашей карты и подтвердите мою оплату \nМой ID: ")
-                                    + userTelegramId);
-                            executeMessage(sendMessageService.sendMsg(update, lng.getLng(userTelegramId).get("Оплата добровольного взноса подтверждена! Теперь Вы можете приобрести уровень.")));
-                    }
-                }
-            }
+//            if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {
+//                if (update.getCallbackQuery().getData().equals(lng.getLng(userTelegramId).get("Подтвердить перевод"))) {
+//                    if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {
+//                        adminService.confirmUserBotPayAuto(userTelegramId);
+//
+//                        paymentService.askedToAdminConfirm(update, KeyboardService.emoji(":heavy_exclamation_mark:") + KeyboardService.emoji(":heavy_exclamation_mark:") +
+//                                lng.getLng(userTelegramId).get("У Вас новый заказ!") + KeyboardService.emoji(":heavy_exclamation_mark:") + KeyboardService.emoji(":heavy_exclamation_mark:")
+//                                + (" Пожалуйста, проверьте баланс Вашей карты и подтвердите мою оплату \nМой ID: ")
+//                                + userTelegramId);
+//                        executeMessage(sendMessageService.sendMsg(update, lng.getLng(userTelegramId).get("Оплата добровольного взноса подтверждена! Теперь Вы можете приобрести уровень.")));
+//                    }
+//                }
+//            }
 
             if (update.getCallbackQuery().getData().matches("[0-9]+") && !validationService.isAnswer(userTelegramId)) {
                 System.out.println(update.getCallbackQuery().getData()); //test
@@ -144,7 +151,7 @@ public class BotController extends TelegramLongPollingBot {
             boolean showMsgSponsorCard = true;
 
 //            if (!userTelegramId.equals(Long.valueOf(properties.getProperties().getProperty("adminId")))) {
-            if (!userTelegramId.equals(Long.valueOf("370678219"))) {
+            if (!userTelegramId.equals(Long.valueOf("0000121"))) {
                 if (now.isAfter(timeStart) && now.isBefore(timeEnd)) {
 
                     if (message.getText().equalsIgnoreCase("/start")) {
@@ -457,7 +464,7 @@ public class BotController extends TelegramLongPollingBot {
                 }
 
                 if (message.getText().equalsIgnoreCase("Установить таймер")) {
-                   timer = true;
+                    timer = true;
                 }
 
 
@@ -482,14 +489,23 @@ public class BotController extends TelegramLongPollingBot {
         }
     }
 
+    //    @Override
+//    public String getBotUsername() {
+//        return "Test29BotValBot";
+//    }
+//
+//    @Override
+//    public String getBotToken() {
+//        return "967287812:AAEAjnZ6gIVczLECLc9J99KAz9oYWORaE9Q";
+//    }
     @Override
     public String getBotUsername() {
-        return "Test29BotValBot";
+        return "dating_zp_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "967287812:AAEAjnZ6gIVczLECLc9J99KAz9oYWORaE9Q";
+        return "920411958:AAEjN4VyKGZYkoKZalvdIfhD0PROnFGtwL0";
     }
 }
 
