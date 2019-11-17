@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LanguageEntity {
 
+
     private Long id;
     private Long userTelegramId;
     private String language;
