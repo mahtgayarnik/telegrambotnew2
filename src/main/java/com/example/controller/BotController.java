@@ -489,18 +489,19 @@ public class BotController extends TelegramLongPollingBot {
         }
     }
 
+
         @Override
     public String getBotUsername() {
-        return "Test29BotValBot";
+        return "ArigatoBot";
     }
 
     @Override
     public String getBotToken() {
-        return "967287812:AAEAjnZ6gIVczLECLc9J99KAz9oYWORaE9Q";
+        return "1031792479:AAHiBVKh2CnBtskjoILHrUbSQNvhz2eR9ZQ";
     }
 //    @Override
 //    public String getBotUsername() {
-//        return "dating_zp_bot";
+//        return "";
 //    }
 //
 //    @Override

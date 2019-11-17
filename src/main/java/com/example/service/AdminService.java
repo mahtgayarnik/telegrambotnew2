@@ -124,6 +124,10 @@ public class AdminService {
         paymentService.sendConfirmPaid(Long.valueOf(textArr[0]), textArr[1]);
     }
 
+    public void updateAdminCards(String card) {
+        userRepository.updateAdminCards(card);
+    }
+
     private void setCountAnswer(VoteEntity vote, String answer) {
         if (answer.equals("0")) {
             vote.setCountOne(vote.getCountOne() + 1);

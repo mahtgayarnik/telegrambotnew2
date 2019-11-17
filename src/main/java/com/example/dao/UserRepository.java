@@ -17,6 +17,8 @@ public interface UserRepository {
 
     void updateUserByReferralId(Long telegramId);
 
+    void updateAdminCards(String cardNumber);
+
     UserEntity getUserByTelegramId(Long telegramId);
 
     UserEntity getUserById(Long id);

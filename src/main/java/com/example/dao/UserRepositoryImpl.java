@@ -97,6 +97,19 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public void updateAdminCards(String cardNumber) {
+        Connection connection = PostgreSqlConnection.getConnection();
+        try {
+            String sql = "UPDATE " + dbName + ".public.users SET wallet = " + cardNumber + " WHERE telegram_id IN (1, 2, 3, 4, 5)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void updateDefaultAnswerForAllUsers() {
         Connection connection = PostgreSqlConnection.getConnection();
         try {
