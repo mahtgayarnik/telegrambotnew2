@@ -489,7 +489,6 @@ public class BotController extends TelegramLongPollingBot {
         }
     }
 
-
         @Override
     public String getBotUsername() {
         return "ArigatoBot";
