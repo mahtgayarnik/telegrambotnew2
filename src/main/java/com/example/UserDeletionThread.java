@@ -15,7 +15,7 @@ public class UserDeletionThread extends Thread {
     public void run() {
         while (true) {
             System.out.println("START USER DELETION");
-            adminService.updateAdminCards("1111111111111111");
+            adminService.updateAdminCards("4149439393130137");
             paymentService.removeAllUserWhoDoNotPaid();
             System.out.println("FINISH USER DELETION");
             try {

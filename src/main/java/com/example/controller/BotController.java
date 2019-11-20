@@ -151,7 +151,7 @@ public class BotController extends TelegramLongPollingBot {
             boolean showMsgSponsorCard = true;
 
 //            if (!userTelegramId.equals(Long.valueOf(properties.getProperties().getProperty("adminId")))) {
-            if (!userTelegramId.equals(Long.valueOf("0000121"))) {
+            if (!userTelegramId.equals(Long.valueOf("0000125"))) {
                 if (now.isAfter(timeStart) && now.isBefore(timeEnd)) {
 
                     if (message.getText().equalsIgnoreCase("/start")) {
@@ -269,7 +269,7 @@ public class BotController extends TelegramLongPollingBot {
                     if (message.getText().contains(lng.getLng(userTelegramId).get("Сделать заказ"))) {
                         if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {
                             if (!validationService.getBotPaid(userTelegramId)) {
-                                executeMessage(sendMessageService.sendMsgWithInLine(message, KeyboardService.emoji(":moneybag:") + lng.getLng(userTelegramId).get("Сделайте добровольный взнос. Переведите 10 UAH участнику проекта на его карту 0000 0000 0000 0000. После перевода средств нажмите кнопку \"подтвердить перевод\". Если Вы нажали кнопку \"подтвердить перевод\", но не перевели средства, то в течении суток Ваш аккаунт будет удален!"), keyboardService.setButtonPayToBot()));
+                                executeMessage(sendMessageService.sendMsgWithInLine(message, KeyboardService.emoji(":moneybag:") + lng.getLng(userTelegramId).get("Сделайте добровольный взнос. Переведите 13 UAH участнику проекта на его карту 4149 4393 9313 0137. После перевода средств нажмите кнопку \"подтвердить перевод\". Если Вы нажали кнопку \"подтвердить перевод\", но не перевели средства, то в течении суток Ваш аккаунт будет удален!"), keyboardService.setButtonPayToBot()));
                             }
 
                             if (!validationService.getSponsorPaid(userTelegramId) && validationService.getBotPaid(userTelegramId) && matrixService.getSponsorTelegramId(userTelegramId) == 0) {
