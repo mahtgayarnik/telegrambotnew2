@@ -151,7 +151,7 @@ public class BotController extends TelegramLongPollingBot {
             boolean showMsgSponsorCard = true;
 
 //            if (!userTelegramId.equals(Long.valueOf(properties.getProperties().getProperty("adminId")))) {
-            if (!userTelegramId.equals(Long.valueOf("547957446"))) {
+            if (!userTelegramId.equals(Long.valueOf("654545645"))) {
                 if (now.isAfter(timeStart) && now.isBefore(timeEnd)) {
 
                     if (message.getText().equalsIgnoreCase("/start")) {
