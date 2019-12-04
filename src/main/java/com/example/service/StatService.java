@@ -57,7 +57,7 @@ public class StatService {
                 KeyboardService.emoji(":pencil2:") + "Вы начинаете с первого уровня и потом уже на прибыль активируются постепенно \n " +
                 "следующие четыре уровня. Больше ни одной копейки со своего кармана вкладывать не придется. \n" +
                 "\n" +
-                KeyboardService.emoji(":moneybag:") + "1 $, 2 $, 4 $, 8 $, 16 $" + KeyboardService.emoji(":moneybag:00") + "\n" +
+                KeyboardService.emoji(":moneybag:") + "1 $, 2 $, 4 $, 8 $, 16 $" + KeyboardService.emoji(":moneybag:") + "\n" +
                 "\n" +
                 KeyboardService.emoji(":pencil2:") + "Каждый раз, когда закрывается ваш цикл в 1 $.вы получаете 4 $. \n " +
                 KeyboardService.emoji(":pencil2:") + "Каждый раз, когда закрывается ваш цикл в 2 $.вы получаете 8 $. \n " +
