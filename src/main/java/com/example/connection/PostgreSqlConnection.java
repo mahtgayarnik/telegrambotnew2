@@ -12,9 +12,9 @@ public class PostgreSqlConnection {
 //    private static final String DB_PASSWORD = "password";
 
     private static final String DB_DRIVER = "org.postgresql.Driver";
-    private static final String DB_URL_MY_DB = "jdbc:postgresql://ec2-54-217-225-16.eu-west-1.compute.amazonaws.com:5432/dc38qhgpk1vokm";
-    private static final String DB_USERNAME = "eiechsmzqvnfal";
-    private static final String DB_PASSWORD = "b519c81fb237ec29adfc07a6095487b392c2fc419ac1d976e815d0d5f0074180";
+    private static final String DB_URL_MY_DB = "jdbc:postgresql://ec2-18-203-62-227.eu-west-1.compute.amazonaws.com:5432/d980dp5ga1d5tc";
+    private static final String DB_USERNAME = "dnfmtoounexufu";
+    private static final String DB_PASSWORD = "faf8ba5f670ee61631818502d7efd97bceae3269d8f1dead4fe8046b0fc21d51";
 
 //    private static final String DB_DRIVER = "org.postgresql.Driver";
 //    private static final String DB_URL_MY_DB = "jdbc:postgresql://localhost:5432/telegram";

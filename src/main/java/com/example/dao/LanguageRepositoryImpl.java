@@ -17,7 +17,7 @@ public class LanguageRepositoryImpl implements LanguageRepository {
 //        connection = PostgreSqlConnection.getConnection();
 //    }
 
-    private String dbName = "dc38qhgpk1vokm";
+    private String dbName = "d980dp5ga1d5tc";
 
     @Override
     public void saveLanguage(LanguageEntity language) {

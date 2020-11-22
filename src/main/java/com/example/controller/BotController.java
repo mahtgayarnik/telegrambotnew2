@@ -269,7 +269,7 @@ public class BotController extends TelegramLongPollingBot {
                     if (message.getText().contains(lng.getLng(userTelegramId).get("Сделать заказ"))) {
                         if (validationService.userIsExist(userTelegramId) && validationService.walletIsExist(userTelegramId)) {
                             if (!validationService.getBotPaid(userTelegramId)) {
-                                executeMessage(sendMessageService.sendMsgWithInLine(message, KeyboardService.emoji(":moneybag:") + lng.getLng(userTelegramId).get("Сделайте добровольный взнос. Переведите 13 UAH участнику проекта на его карту 4149 4393 9313 0137. После перевода средств нажмите кнопку \"подтвердить перевод\". Если Вы нажали кнопку \"подтвердить перевод\", но не перевели средства, то в течении суток Ваш аккаунт будет удален!"), keyboardService.setButtonPayToBot()));
+                                executeMessage(sendMessageService.sendMsgWithInLine(message, KeyboardService.emoji(":moneybag:") + lng.getLng(userTelegramId).get("Сделайте добровольный взнос. Переведите 13 UAH участнику проекта на его карту 4149 4390 2052 9560. После перевода средств нажмите кнопку \"подтвердить перевод\". Если Вы нажали кнопку \"подтвердить перевод\", но не перевели средства, то в течении суток Ваш аккаунт будет удален!"), keyboardService.setButtonPayToBot()));
                             }
 
                             if (!validationService.getSponsorPaid(userTelegramId) && validationService.getBotPaid(userTelegramId) && matrixService.getSponsorTelegramId(userTelegramId) == 0) {
