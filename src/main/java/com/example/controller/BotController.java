@@ -152,6 +152,7 @@ public class BotController extends TelegramLongPollingBot {
 
 //            if (!userTelegramId.equals(Long.valueOf(properties.getProperties().getProperty("adminId")))) {
             if (!userTelegramId.equals(Long.valueOf("547957446"))) {
+//            if (!userTelegramId.equals(Long.valueOf("370678219"))) {
                 if (now.isAfter(timeStart) && now.isBefore(timeEnd)) {
 
                     if (message.getText().equalsIgnoreCase("/start")) {
